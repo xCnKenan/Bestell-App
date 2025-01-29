@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bestell App</title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="./styles/card.css" />
+
+    <script src="./script.js"></script>
+    <script src="./scripts/db.js"></script>
+    <script src="./scripts/templates.js"></script>
+  </head>
+  <body onload="init()">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">
+          <img
+            class="mainLogo"
+            src="./assets/img/Logo.png"
+            alt="Logo"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="content">
+        <div class="dishes">
+          <img class="mainPicture" src="./assets/img/bowl.jpg" alt="" />
+          <div class="chooseDishes">
+            <span onclick="renderMainDishes()" class="mydish">Hauptgerichte</span>
+            <span onclick="renderSweetDishes()" class="mydish">Desserts</span>
+          </div>
+          <img
+            class="mainPicture picturePadding"
+            src="./assets/img/bowl-second.jpg"
+            alt=""
+          />
+          <div class="allDishes" id="allDishes">
+          </div>
+          <div>
+            <img class="mainPicture picturePadding" src="./assets/img/brownie.jpg"/>
+            <span onclick="renderSweetDishes()" class="chooseDish mydish">Desserts</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="shoppingCart">
+        <div class="basket shadow">
+          <div class="card rounded-0">
+            <div class="card-body">
+              <h1>Warenkorb</h1>
+            </div>
+          </div>
+
+          <div id="shoppingCart">
+            <!--hier kommen neue elemente rein--> 
+            <div id="removeInfo" class="emptyBasket">
+            <img src="./assets/img/empty-basket.png" alt="">
+            <span>Warenkorb leer</span>
+            </div>
+          </div>
+
+          <div id="invoice"></div>
+
+        </div>
+      </div>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
