@@ -22,7 +22,6 @@ function addToCart(index) {
   let infoRef = document.getElementById("removeInfo");
   document.getElementById("removeInfo").style = "";
   document.getElementById("removeInfo").style = "display:none";
-  
 
   if (myMainDishes[index].amount === 0) {
     myMainDishes[index].amount++;
@@ -44,9 +43,6 @@ function addToCart(index) {
 }
 
 function addToCartMinus(index) {
-
-  
-
   if (myMainDishes[index].amount > 1) {
     myMainDishes[index].amount--;
     let currentNumber = document.getElementById(`counter` + index);
@@ -57,14 +53,9 @@ function addToCartMinus(index) {
     let currentPrice = document.getElementById(`finalPrice` + index);
     currentPrice.innerHTML = ``;
     currentPrice.innerHTML = `${finalResult}€`;
-  } else if ((myMainDishes[index].amount = 1)) {
-
-    let removeRef = document.getElementById('removeDish' + index);
-
-    // let basketRef = document.getElementById("shoppingCart");
-
-
+  } else if (myMainDishes[index].amount = 1) {
+    let foodFieldRef = document.getElementById("foodField" + index);
     myMainDishes[index].amount = 0;
-    removeRef.innerHTML = ``;
+    foodFieldRef.remove();
   }
 }

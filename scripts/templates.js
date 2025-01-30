@@ -25,10 +25,10 @@ function getSweetDishTemplate(indexSweet) {
 }
 
 function basketTemplate(index) {
-  let basketRef = document.getElementById("shoppingCart");
+  let basketRef = document.getElementById("addFood");
     basketRef.innerHTML += ` 
-   <div id="removeDish${index}"> 
-    <div class="menuList" id="foodField${index}">
+   
+          <div class="menuList" id="foodField${index}">
             <span class="boldTitleBasket">${myMainDishes[index].name}</span>
 
             <div class="priceList">
@@ -39,9 +39,7 @@ function basketTemplate(index) {
               <img class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
-    </div>
-
-        `;
+    `;
   getInvoiceTemplate(index);
 }
 
