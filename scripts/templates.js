@@ -12,7 +12,7 @@ function getMainDishTemplate(index) {
 }
 
 function getSweetDishTemplate(indexSweet) {
-  return `<div class="foodCard gap border">
+  return `<div class="foodCard gap border" id="foodCard_${indexSweet}" onclick="addToCartSweets(${indexSweet})">
             <div class="foodCardBody">
               <p class="boldTitle">${mySweetDishes[indexSweet].name}</p>
               <p class="dishDescription">${mySweetDishes[indexSweet].description}</p>
@@ -26,7 +26,7 @@ function getSweetDishTemplate(indexSweet) {
 
 function basketTemplate(index) {
   let basketRef = document.getElementById("addFood");
-    basketRef.innerHTML += ` 
+  basketRef.innerHTML += ` 
    
           <div class="menuList" id="foodField${index}">
             <span class="boldTitleBasket">${myMainDishes[index].name}</span>
@@ -36,7 +36,26 @@ function basketTemplate(index) {
               <p id="counter${index}">${myMainDishes[index].amount}x</p>
               <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
               <p id="finalPrice${index}">${myMainDishes[index].price}€</p>
-              <img class="trash" src="./assets/img/trash.png"/>
+              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
+            </div>
+          </div>
+    `;
+  getInvoiceTemplate(index);
+}
+
+function basketSweetsTemplate(index) {
+  let basketRef = document.getElementById("addFood");
+  basketRef.innerHTML += ` 
+   
+          <div class="menuList" id="foodField${index}">
+            <span class="boldTitleBasket">${mySweetDishes[index].name}</span>
+
+            <div class="priceList">
+              <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
+              <p id="counter${index}">${mySweetDishes[index].amount}x</p>
+              <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
+              <p id="finalPrice${index}">${mySweetDishes[index].price}€</p>
+              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
     `;
@@ -45,9 +64,7 @@ function basketTemplate(index) {
 
 function getInvoiceTemplate(index) {
   let invoiceRef = document.getElementById("invoice");
-
   invoiceRef.innerHTML = "";
-
   invoiceRef.innerHTML = `<div class="divide">
               <div class="line"></div>
             </div>

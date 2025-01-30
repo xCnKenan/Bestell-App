@@ -42,6 +42,30 @@ function addToCart(index) {
   }
 }
 
+function addToCartSweets(index) {
+  let infoRef = document.getElementById("removeInfo");
+  document.getElementById("removeInfo").style = "";
+  document.getElementById("removeInfo").style = "display:none";
+
+  if (mySweetDishes[index].amount === 0) {
+    mySweetDishes[index].amount++;
+    finalResult = mySweetDishes[index].amount * mySweetDishes[index].price;
+    finalResult = Number.parseFloat(finalResult).toFixed(2);
+    infoRef.innerHTML = "";
+    infoRef.innerHTML = basketSweetsTemplate(index);
+  } else if (mySweetDishes[index].amount >= 0) {
+    mySweetDishes[index].amount++;
+    let currentNumber = document.getElementById(`counter` + index);
+    currentNumber.innerHTML = "";
+    currentNumber.innerHTML = `${mySweetDishes[index].amount}x`;
+    finalResult = mySweetDishes[index].amount * mySweetDishes[index].price;
+    finalResult = Number.parseFloat(finalResult).toFixed(2);
+    let currentPrice = document.getElementById(`finalPrice` + index);
+    currentPrice.innerHTML = ``;
+    currentPrice.innerHTML = `${finalResult}€`;
+  }
+}
+
 function addToCartMinus(index) {
   if (myMainDishes[index].amount > 1) {
     myMainDishes[index].amount--;
@@ -57,5 +81,11 @@ function addToCartMinus(index) {
     let foodFieldRef = document.getElementById("foodField" + index);
     myMainDishes[index].amount = 0;
     foodFieldRef.remove();
-  }
+  } 
+}
+
+function deleteDish(index) {
+  let foodFieldRef = document.getElementById("foodField" + index);
+    myMainDishes[index].amount = 0;
+    foodFieldRef.remove();
 }
