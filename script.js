@@ -42,44 +42,62 @@ function addToCart(index) {
   }
 }
 
-function addToCartSweets(index) {
+function addToCartSweets(indexSweet) {
   let infoRef = document.getElementById("removeInfo");
   document.getElementById("removeInfo").style = "";
   document.getElementById("removeInfo").style = "display:none";
 
-  if (mySweetDishes[index].amount === 0) {
-    mySweetDishes[index].amount++;
-    finalResult = mySweetDishes[index].amount * mySweetDishes[index].price;
+  if (mySweetDishes[indexSweet].amount === 0) {
+    mySweetDishes[indexSweet].amount++;
+    finalResult = mySweetDishes[indexSweet].amount * mySweetDishes[indexSweet].price;
     finalResult = Number.parseFloat(finalResult).toFixed(2);
     infoRef.innerHTML = "";
-    infoRef.innerHTML = basketSweetsTemplate(index);
-  } else if (mySweetDishes[index].amount >= 0) {
-    mySweetDishes[index].amount++;
-    let currentNumber = document.getElementById(`counter` + index);
+    infoRef.innerHTML = basketSweetsTemplate(indexSweet);
+  } else if (mySweetDishes[indexSweet].amount >= 0) {
+    mySweetDishes[indexSweet].amount++;
+    let currentNumber = document.getElementById(`counterSweets` + indexSweet);
     currentNumber.innerHTML = "";
-    currentNumber.innerHTML = `${mySweetDishes[index].amount}x`;
-    finalResult = mySweetDishes[index].amount * mySweetDishes[index].price;
+    currentNumber.innerHTML = `${mySweetDishes[indexSweet].amount}x`;
+    finalResult = mySweetDishes[indexSweet].amount * mySweetDishes[indexSweet].price;
     finalResult = Number.parseFloat(finalResult).toFixed(2);
-    let currentPrice = document.getElementById(`finalPrice` + index);
+    let currentPrice = document.getElementById(`finalPriceSweets` + indexSweet);
     currentPrice.innerHTML = ``;
     currentPrice.innerHTML = `${finalResult}€`;
   }
 }
 
-function addToCartMinus(index) {
-  if (myMainDishes[index].amount > 1) {
-    myMainDishes[index].amount--;
-    let currentNumber = document.getElementById(`counter` + index);
+function addToCartMinus(indexSweet) {
+  if (myMainDishes[indexSweet].amount > 1) {
+    myMainDishes[indexSweet].amount--;
+    let currentNumber = document.getElementById(`counter` + indexSweet);
     currentNumber.innerHTML = "";
-    currentNumber.innerHTML = `${myMainDishes[index].amount}x`;
-    finalResult = finalResult - myMainDishes[index].price;
+    currentNumber.innerHTML = `${myMainDishes[indexSweet].amount}x`;
+    finalResult = finalResult - myMainDishes[indexSweet].price;
     finalResult = Number.parseFloat(finalResult).toFixed(2);
-    let currentPrice = document.getElementById(`finalPrice` + index);
+    let currentPrice = document.getElementById(`finalPrice` + indexSweet);
     currentPrice.innerHTML = ``;
     currentPrice.innerHTML = `${finalResult}€`;
-  } else if (myMainDishes[index].amount = 1) {
-    let foodFieldRef = document.getElementById("foodField" + index);
-    myMainDishes[index].amount = 0;
+  } else if (myMainDishes[indexSweet].amount = 1) {
+    let foodFieldRef = document.getElementById("foodField" + indexSweet);
+    myMainDishes[indexSweet].amount = 0;
+    foodFieldRef.remove();
+  } 
+}
+
+function addToCartSweetsMinus(indexSweet) {
+  if (mySweetDishes[indexSweet].amount > 1) {
+    mySweetDishes[indexSweet].amount--;
+    let currentNumber = document.getElementById(`counterSweets` + indexSweet);
+    currentNumber.innerHTML = "";
+    currentNumber.innerHTML = `${mySweetDishes[indexSweet].amount}x`;
+    finalResult = finalResult - mySweetDishes[indexSweet].price;
+    finalResult = Number.parseFloat(finalResult).toFixed(2);
+    let currentPrice = document.getElementById(`finalPriceSweets` + indexSweet);
+    currentPrice.innerHTML = ``;
+    currentPrice.innerHTML = `${finalResult}€`;
+  } else if (mySweetDishes[indexSweet].amount = 1) {
+    let foodFieldRef = document.getElementById("foodField" + indexSweet);
+    mySweetDishes[indexSweet].amount = 0;
     foodFieldRef.remove();
   } 
 }
@@ -87,5 +105,11 @@ function addToCartMinus(index) {
 function deleteDish(index) {
   let foodFieldRef = document.getElementById("foodField" + index);
     myMainDishes[index].amount = 0;
+    foodFieldRef.remove();
+}
+
+function deleteSweetDish(indexSweet) {
+  let foodFieldRef = document.getElementById("foodFieldSweets" + index);
+    mySweetDishes[indexSweet].amount = 0;
     foodFieldRef.remove();
 }

@@ -43,19 +43,19 @@ function basketTemplate(index) {
   getInvoiceTemplate(index);
 }
 
-function basketSweetsTemplate(index) {
+function basketSweetsTemplate(indexSweet) {
   let basketRef = document.getElementById("addFood");
   basketRef.innerHTML += ` 
    
-          <div class="menuList" id="foodField${index}">
-            <span class="boldTitleBasket">${mySweetDishes[index].name}</span>
+          <div class="menuList" id="foodSweetField${indexSweet}">
+            <span class="boldTitleBasket">${mySweetDishes[indexSweet].name}</span>
 
             <div class="priceList">
-              <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
-              <p id="counter${index}">${mySweetDishes[index].amount}x</p>
-              <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
-              <p id="finalPrice${index}">${mySweetDishes[index].price}€</p>
-              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
+              <img onclick="addToCartSweetsMinus(${indexSweet})" class="minus" src="./assets/img/minus.png"/>
+              <p id="counterSweets${indexSweet}">${mySweetDishes[indexSweet].amount}x</p>
+              <img onclick="addToCartSweets(${index})" class="plus" src="./assets/img/plus.png"/>
+              <p id="finalPriceSweets${indexSweet}">${mySweetDishes[indexSweet].price}€</p>
+              <img onclick="deleteSweetDish(${indexSweet})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
     `;
