@@ -27,24 +27,26 @@ function basketTemplate(index) {
             </div>
           </div>
     `;
-  getInvoiceTemplate();
+  getInvoiceTemplate(index);
 }
 
 function getInvoiceTemplate() {
+  let sum = 0;
+
   for (let indexMain = 0; indexMain < myMainDishes.length; indexMain++) {
     let result = myMainDishes[indexMain];
+    sum = sum + result.amount * result.price;
 
-    for (
-      let indexPrice = 0;indexPrice < result.newPrice.length;indexPrice++) {
-      let invoiceRef = document.getElementById("invoice");
-      invoiceRef.innerHTML = "";
-      invoiceRef.innerHTML = `<div class="divide">
+  }
+  let invoiceRef = document.getElementById("invoice");
+  invoiceRef.innerHTML = "";
+  invoiceRef.innerHTML = `<div class="divide">
                   <div class="line"></div>
                 </div>
                 <table>
                   <tr>
                     <td class="costs">Zwischensumme</td>
-                    <td id="invoicePrice" class="costs">${result.newPrice}€</td>
+                    <td id="invoicePrice" class="costs">${sum.toFixed(2)}€</td>
                   </tr>
                   <tr>
                     <td class="costs">Lieferkosten</td>
@@ -52,15 +54,9 @@ function getInvoiceTemplate() {
                   </tr>
                   <tr>
                     <td class="boldTitleBasket">Gesamt</td>
-                    <td id="invoiceAllCosts" class="boldTitleBasket">${result.newPrice}€</td>
+                    <td id="invoiceAllCosts" class="boldTitleBasket">${(sum + 2.5).toFixed(2)}€</td>
                   </tr>
                 </table>`;
-    }
-
-  }
-
- 
-  
 }
 
 function getSweetDishTemplate(indexSweet) {
