@@ -11,6 +11,58 @@ function getMainDishTemplate(index) {
           </div>`;
 }
 
+function basketTemplate(index) {
+  let basketRef = document.getElementById("addFood");
+  basketRef.innerHTML += ` 
+   
+          <div class="menuList" id="foodField${index}">
+            <span class="boldTitleBasket">${myMainDishes[index].name}</span>
+
+            <div class="priceList">
+              <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
+              <p id="counter${index}">${myMainDishes[index].amount}x</p>
+              <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
+              <p id="finalPrice${index}">${myMainDishes[index].newPrice}€</p>
+              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
+            </div>
+          </div>
+    `;
+  getInvoiceTemplate();
+}
+
+function getInvoiceTemplate() {
+  for (let indexMain = 0; indexMain < myMainDishes.length; indexMain++) {
+    let result = myMainDishes[indexMain];
+
+    for (
+      let indexPrice = 0;indexPrice < result.newPrice.length;indexPrice++) {
+      let invoiceRef = document.getElementById("invoice");
+      invoiceRef.innerHTML = "";
+      invoiceRef.innerHTML = `<div class="divide">
+                  <div class="line"></div>
+                </div>
+                <table>
+                  <tr>
+                    <td class="costs">Zwischensumme</td>
+                    <td id="invoicePrice" class="costs">${result.newPrice}€</td>
+                  </tr>
+                  <tr>
+                    <td class="costs">Lieferkosten</td>
+                    <td class="costs">2.50€</td>
+                  </tr>
+                  <tr>
+                    <td class="boldTitleBasket">Gesamt</td>
+                    <td id="invoiceAllCosts" class="boldTitleBasket">${result.newPrice}€</td>
+                  </tr>
+                </table>`;
+    }
+
+  }
+
+ 
+  
+}
+
 function getSweetDishTemplate(indexSweet) {
   return `<div class="foodCard gap border" id="foodCard_${indexSweet}" onclick="addToCartSweets(${indexSweet})">
             <div class="foodCardBody">
@@ -24,25 +76,6 @@ function getSweetDishTemplate(indexSweet) {
           </div>`;
 }
 
-function basketTemplate(index) {
-  let basketRef = document.getElementById("addFood");
-  basketRef.innerHTML += ` 
-   
-          <div class="menuList" id="foodField${index}">
-            <span class="boldTitleBasket">${myMainDishes[index].name}</span>
-
-            <div class="priceList">
-              <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
-              <p id="counter${index}">${myMainDishes[index].amount}x</p>
-              <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
-              <p id="finalPrice${index}">${myMainDishes[index].price}€</p>
-              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
-            </div>
-          </div>
-    `;
-  getInvoiceTemplate(index);
-}
-
 function basketSweetsTemplate(indexSweet) {
   let basketRef = document.getElementById("addFood");
   basketRef.innerHTML += ` 
@@ -53,33 +86,11 @@ function basketSweetsTemplate(indexSweet) {
             <div class="priceList">
               <img onclick="addToCartSweetsMinus(${indexSweet})" class="minus" src="./assets/img/minus.png"/>
               <p id="counterSweets${indexSweet}">${mySweetDishes[indexSweet].amount}x</p>
-              <img onclick="addToCartSweets(${index})" class="plus" src="./assets/img/plus.png"/>
+              <img onclick="addToCartSweets(${indexSweet})" class="plus" src="./assets/img/plus.png"/>
               <p id="finalPriceSweets${indexSweet}">${mySweetDishes[indexSweet].price}€</p>
               <img onclick="deleteSweetDish(${indexSweet})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
     `;
-  getInvoiceTemplate(index);
-}
-
-function getInvoiceTemplate(index) {
-  let invoiceRef = document.getElementById("invoice");
-  invoiceRef.innerHTML = "";
-  invoiceRef.innerHTML = `<div class="divide">
-              <div class="line"></div>
-            </div>
-            <table>
-              <tr>
-                <td class="costs">Zwischensumme</td>
-                <td id="invoicePrice" class="costs">${myMainDishes[index].price}€</td>
-              </tr>
-              <tr>
-                <td class="costs">Lieferkosten</td>
-                <td class="costs">2.50€</td>
-              </tr>
-              <tr>
-                <td class="boldTitleBasket">Gesamt</td>
-                <td id="invoiceAllCosts" class="boldTitleBasket">${myMainDishes[index].price}€</td>
-              </tr>
-            </table>`;
+  getInvoiceTemplate(indexSweet);
 }

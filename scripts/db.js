@@ -3,47 +3,54 @@ let myMainDishes = [
         "name":"Veggie Buddha Bowl",
         "price": 14.99,
         "description":"mit gegrilltem Gemüse, Süßkartoffel Chunks, Roter Bete, Edamame, Walnüssen, warmen Quinoa & Vollkornreis und frischem Salat.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Japanese Beef Bowl",
         "price": 12.99,
         "description":"mit frisch gegrilltem Weiderind, Rotkohl, Gurken, fruchtiger Mango, Miso Mayo, gerösteten Erdnüssen, frischem Koriander, Jasmin-Duftreis und frischem Salat.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Vegan Falafel Bowl",
         "price": 17.99,
         "description":"mit Green Falafel, cremigem Hummus, saftigen Granatapfelkernen, Roter Bete, Gurken, knackigen Karotten, frischer Minze, warmen Quinoa & Vollkornreis und frischem Salat.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Crunchy Chicken Bowl",
         "price": 14.99,
         "description":"mit gegrillten Hähnchen-Filetstreifen, Edamame, sonnengereiften Kirschtomaten, fruchtiger Mango, saftigen Granatapfelkernen, gerösteten Crunchy Onions, warmen Quinoa & Vollkornreis und frischem Salat.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Black Rice Avocado Chicken Bowl",
         "price": 13.99,
         "description":"mit gegrillten Hähnchen-Filetstreifen, Avocado,  Babyspinat, sonnengereiften Kirschtomaten, Spitzpaprika, schwarzem Reis, frischem Koriander, Lemon Herbs Sauce.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Chicken Teriyaki Bowl",
         "price": 12.99,
         "description":"mit gegrillten Hähnchen-Filetstreifen, Rotkohl, sonnengereiften Kirschtomaten, Gurken, Frühlingszwiebeln, Jasmin-Duftreis, Sesam und Limette.",
-        "amount": 0
+        "amount": 0,
+        "newPrice": []
     },
     {
         "name":"Avocado Chicken Bowl",
         "price": 16.99,
         "description":"mit frisch gegrilltem Hähnchen-Filet, Avocado, knackiger Paprika, sonnengereiften Kirschtomaten, frischem Koriander, Frühlingszwiebeln, Limette, warmen Quinoa & Vollkornreis und frischem Salat.",
-        "amount": 0
-    },
+        "amount": 0,
+        "newPrice": []
+    }
 ];
 
-let myBasket =[];
+let myBasket = [];
 
 let mySweetDishes = [
     {
