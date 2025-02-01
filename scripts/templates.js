@@ -36,6 +36,14 @@ function getInvoiceTemplate() {
   for (let indexMain = 0; indexMain < myMainDishes.length; indexMain++) {
     let result = myMainDishes[indexMain];
     sum = sum + result.amount * result.price;
+
+    if (result.amount == 0 && sum == 0 && result.price == 0) {
+      document.getElementById("removeInfo").style = "";
+      document.getElementById("removeInfo").innerHTML = `<img src="./assets/img/empty-basket.png" alt="">
+                                                        <span>Warenkorb leer</span>`;
+      let invoiceRef = document.getElementById("invoice");
+      invoiceRef.style = "display:none";
+    }
   }
 
   let invoiceRef = document.getElementById("invoice");
@@ -54,36 +62,20 @@ function getInvoiceTemplate() {
                   </tr>
                   <tr>
                     <td class="boldTitleBasket">Gesamt</td>
-                    <td id="invoiceAllCosts" class="boldTitleBasket">${(sum + 2.5).toFixed(2)}€</td>
+                    <td id="invoiceAllCosts" class="boldTitleBasket">${(
+                      sum + 2.5
+                    ).toFixed(2)}€</td>
                   </tr>
                 </table>`;
 
-    if (sum == 0){
-      
+  if (sum == 0) {
     document.getElementById("removeInfo").style = "";
-    document.getElementById("removeInfo").innerHTML = 
-                                                      `<img src="./assets/img/empty-basket.png" alt="">
+    document.getElementById("removeInfo").innerHTML = `<img src="./assets/img/empty-basket.png" alt="">
                                                       <span>Warenkorb leer</span>`;
-                                                      
-                                                      
     let invoiceRef = document.getElementById("invoice");
     invoiceRef.style = "display:none";
-    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function getSweetDishTemplate(indexSweet) {
   return `<div class="foodCard gap border" id="foodCard_${indexSweet}" onclick="addToCartSweets(${indexSweet})">
