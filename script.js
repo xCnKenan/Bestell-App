@@ -41,18 +41,30 @@ function addToCart(index) {
 
 function addToCartMinus(index) {
   if (myMainDishes[index].amount > 1) {
+    let sum = 0;
+
+    
+      sum = myMainDishes[index].newPrice - myMainDishes[index].price;
+
+      myMainDishes[index].newPrice = sum;
+
+      
+    
+
     myMainDishes[index].amount--;
     let currentNumber = document.getElementById(`counter` + index);
     currentNumber.innerHTML = "";
     currentNumber.innerHTML = `${myMainDishes[index].amount}x`;
-    finalResult = finalResult - myMainDishes[index].price;
-    finalResult = Number.parseFloat(finalResult).toFixed(2);
+    // finalResult = finalResult - myMainDishes[index].price;
+    // finalResult = Number.parseFloat(finalResult).toFixed(2);
     let currentPrice = document.getElementById(`finalPrice` + index);
     currentPrice.innerHTML = ``;
-    currentPrice.innerHTML = `${finalResult}€`;
+    currentPrice.innerHTML = `${sum.toFixed(2)}€`;
+    getInvoiceTemplate(index);
   } else if ((myMainDishes[index].amount = 1)) {
     let foodFieldRef = document.getElementById("foodField" + index);
     myMainDishes[index].amount = 0;
+    getInvoiceTemplate(index);
     foodFieldRef.remove();
   }
 }

@@ -22,7 +22,7 @@ function basketTemplate(index) {
               <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
               <p id="counter${index}">${myMainDishes[index].amount}x</p>
               <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
-              <p id="finalPrice${index}">${myMainDishes[index].newPrice}€</p>
+              <p id="finalPrice${index}">${myMainDishes[index].price}€</p>
               <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
