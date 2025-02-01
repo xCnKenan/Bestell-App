@@ -36,8 +36,8 @@ function getInvoiceTemplate() {
   for (let indexMain = 0; indexMain < myMainDishes.length; indexMain++) {
     let result = myMainDishes[indexMain];
     sum = sum + result.amount * result.price;
-
   }
+
   let invoiceRef = document.getElementById("invoice");
   invoiceRef.innerHTML = "";
   invoiceRef.innerHTML = `<div class="divide">
@@ -57,7 +57,33 @@ function getInvoiceTemplate() {
                     <td id="invoiceAllCosts" class="boldTitleBasket">${(sum + 2.5).toFixed(2)}€</td>
                   </tr>
                 </table>`;
+
+    if (sum == 0){
+      
+    document.getElementById("removeInfo").style = "";
+    document.getElementById("removeInfo").innerHTML = 
+                                                      `<img src="./assets/img/empty-basket.png" alt="">
+                                                      <span>Warenkorb leer</span>`;
+                                                      
+                                                      
+    let invoiceRef = document.getElementById("invoice");
+    invoiceRef.style = "display:none";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getSweetDishTemplate(indexSweet) {
   return `<div class="foodCard gap border" id="foodCard_${indexSweet}" onclick="addToCartSweets(${indexSweet})">

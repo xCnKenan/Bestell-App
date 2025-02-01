@@ -14,14 +14,16 @@ function addToCart(index) {
   let infoRef = document.getElementById("removeInfo");
   document.getElementById("removeInfo").style = "";
   document.getElementById("removeInfo").style = "display:none";
+  let invoiceRef = document.getElementById("invoice");
+    invoiceRef.style = "";
 
   if (myMainDishes[index].amount === 0) {
 
     myMainDishes[index].amount++;
     finalResult = myMainDishes[index].amount * myMainDishes[index].price;
     finalResult = Number.parseFloat(finalResult).toFixed(2);
-    let newPrice = finalResult;
-    myMainDishes[index].newPrice.push(newPrice);
+    myMainDishes[index].newPrice = finalResult;
+    // myMainDishes[index].newPrice.push(newPrice);
     infoRef.innerHTML = "";
     infoRef.innerHTML = basketTemplate(index);
   } else if (myMainDishes[index].amount >= 0) {
@@ -40,17 +42,13 @@ function addToCart(index) {
 }
 
 function addToCartMinus(index) {
+
+  
+
   if (myMainDishes[index].amount > 1) {
     let sum = 0;
-
-    
-      sum = myMainDishes[index].newPrice - myMainDishes[index].price;
-
-      myMainDishes[index].newPrice = sum;
-
-      
-    
-
+    sum = myMainDishes[index].newPrice - myMainDishes[index].price;
+    myMainDishes[index].newPrice = sum;
     myMainDishes[index].amount--;
     let currentNumber = document.getElementById(`counter` + index);
     currentNumber.innerHTML = "";
@@ -66,7 +64,7 @@ function addToCartMinus(index) {
     myMainDishes[index].amount = 0;
     getInvoiceTemplate(index);
     foodFieldRef.remove();
-  }
+  } 
 }
 
 function deleteDish(index) {
