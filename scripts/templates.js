@@ -41,7 +41,7 @@ function getInvoiceTemplate(sumOfDishes){
               </tr>
               <tr>
                 <td class="costs">Lieferkosten</td>
-                <td class="costs">2.50€</td>
+                <td class="costs">5.00€</td>
               </tr>
               <tr>
                 <td class="boldTitleBasket">Gesamt</td>

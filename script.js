@@ -22,21 +22,14 @@ function addToCart(index) {
     addNewKindOfDish(index);
     calculateInvoice(index);
   }  
-  else if (MainDishes[index].amount >= 0) {
-    let currentNumber = document.getElementById(`counter` + index);
-    currentNumber.innerHTML = "";
-    myMainDishes[index].amount++;
-    currentNumber.innerHTML = `${mainDishes[index].amount}x`;
-    finalResult = mainDishes[index].amount * mainDishes[index].price;
-    finalResult = Number.parseFloat(finalResult).toFixed(2);
-    mainDishes[index].newPrice = finalResult;
-    let finalPrice = document.getElementById(`finalPrice` + index);
-    finalPrice.innerHTML = ``;
-    finalPrice.innerHTML = `${mainDishes[index].newPrice}€`;
-    getInvoiceTemplate(index);
+  else if (basket[index].amount >= 0) {
+    additionAmmount(index);
+    finalResult = additionPrice(index);
+    calculateInvoice(index);
   }
 }
 
+// clean code here
 function addNewKindOfDish(index){
   let infoRef = document.getElementById("removeInfo");
   finalResult = manageAdditionOrder(index);
@@ -59,6 +52,30 @@ function calculateInvoice() {
   }
   getInvoiceTemplate(sumOfDishes);
 }
+//clean code here
+
+function additionAmmount(index) {
+  let currentNumber = document.getElementById(`counter` + index);
+    currentNumber.innerHTML = "";
+    basket[index].amount++;
+    currentNumber.innerHTML = `${basket[index].amount}x`;
+}
+
+function additionPrice(index){
+  let finalPrice = document.getElementById(`finalPrice` + index);
+  finalPrice.innerHTML = ``;
+  let calculationOfPrice = basket[index].amount * basket[index].price;
+  finalPrice.innerHTML = `${calculationOfPrice.toFixed(2)}€`;
+}
+
+
+
+
+
+
+
+
+
 
 
 
