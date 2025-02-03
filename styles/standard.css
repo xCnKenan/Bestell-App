@@ -1,0 +1,47 @@
+:root{
+    --main: #f96d00;
+    --hover: #ffd5b5;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+main{
+    /* gap: 8px; */
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.content{
+    width: calc(100% - 300px);
+    
+}
+
+.dishes{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.shoppingCart{
+    width: 300px;
+    flex-grow: 1;
+}
+
+.basket{
+    width: 100%;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.d-none{
+    display: none;
+}
