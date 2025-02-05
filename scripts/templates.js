@@ -22,7 +22,7 @@ function basketTemplate(index) {
               <p id="counter${index}">${basket[index].amount}x</p>
               <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
               <p id="finalPrice${index}">${basket[index].price}€</p>
-              <img onclick="deleteDish(${index})" class="trash" src="./assets/img/trash.png"/>
+              <img onclick="removeDishFromBasket(${index})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
     `;
@@ -31,13 +31,13 @@ function basketTemplate(index) {
 function getInvoiceTemplate(sumOfDishes){
   let invoiceRef = document.getElementById("invoice");
   invoiceRef.innerHTML = "";
-  invoiceRef.innerHTML = `<div class="divide">
+  invoiceRef.innerHTML = `<div class="divide" id="divide">
               <div class="line"></div>
             </div>
             <table>
               <tr>
                 <td class="costs">Zwischensumme</td>
-                <td id="invoicePrice" class="costs">${sumOfDishes}€</td>
+                <td id="invoicePrice" class="costs">${sumOfDishes.toFixed(2)}€</td>
               </tr>
               <tr>
                 <td class="costs">Lieferkosten</td>
@@ -45,7 +45,7 @@ function getInvoiceTemplate(sumOfDishes){
               </tr>
               <tr>
                 <td class="boldTitleBasket">Gesamt</td>
-                <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes}€</td>
+                <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes.toFixed(2)}€</td>
               </tr>
             </table>`;
 }
