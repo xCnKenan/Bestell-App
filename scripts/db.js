@@ -39,32 +39,39 @@ let mainDishes = [
 let basket = [
     {
         "price": 14.99,
-        "amount": 0  
+        "amount": 0,
+        "newPrice": 0  
     },
     {
         "price": 12.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     },
     {
         "price": 17.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     },
     {
         "price": 14.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     },
     {
         "price": 13.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     },
     {
         
         "price": 12.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     },
     {
         "price": 16.99,
-        "amount": 0
+        "amount": 0,
+        "newPrice": 0
     }
 ];
 

@@ -29,23 +29,41 @@ function basketTemplate(index) {
 }
 
 function getInvoiceTemplate(sumOfDishes){
-  let invoiceRef = document.getElementById("invoice");
-  invoiceRef.innerHTML = "";
-  invoiceRef.innerHTML = `<div class="divide" id="divide">
-              <div class="line"></div>
-            </div>
-            <table>
-              <tr>
-                <td class="costs">Zwischensumme</td>
-                <td id="invoicePrice" class="costs">${sumOfDishes.toFixed(2)}€</td>
-              </tr>
-              <tr>
-                <td class="costs">Lieferkosten</td>
-                <td class="costs">5.00€</td>
-              </tr>
-              <tr>
-                <td class="boldTitleBasket">Gesamt</td>
-                <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes.toFixed(2)}€</td>
-              </tr>
-            </table>`;
+
+  for (let index = 0; index < basket.length; index++) {
+    if(sumOfDishes == 0 && basket[index].amount == 0 && basket[index].newPrice == 0){  // if all dishes gone from basket, show default empty basket
+      let invoiceRef = document.getElementById("invoice");
+      invoiceRef.innerHTML="";
+      document.getElementById("removeInfo").style = "";
+      document.getElementById("removeInfo").innerHTML = "";
+      document.getElementById("removeInfo").innerHTML =`
+            <img src="./assets/img/empty-basket.png" alt="">
+            <span>Warenkorb leer</span>`;
+    } else {
+      let invoiceRef = document.getElementById("invoice");
+      invoiceRef.innerHTML = "";
+      invoiceRef.innerHTML = `<div class="divide" id="divide">
+                <div class="line"></div>
+              </div>
+              <table>
+                <tr>
+                  <td class="costs">Zwischensumme</td>
+                  <td id="invoicePrice" class="costs">${sumOfDishes.toFixed(2)}€</td>
+                </tr>
+                <tr>
+                  <td class="costs">Lieferkosten</td>
+                  <td class="costs">5.00€</td>
+                </tr>
+                <tr>
+                  <td class="boldTitleBasket">Gesamt</td>
+                  <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes.toFixed(2)}€</td>
+                </tr>
+              </table>`;
+    }
+    
+  }
+
+  
+
+  
 }

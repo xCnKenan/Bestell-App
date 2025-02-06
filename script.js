@@ -13,7 +13,7 @@ function renderMainDishes() {
 }
 
 function addToCart(index) {
-  document.getElementById("removeInfo").style = "";
+  // document.getElementById("removeInfo").style = "";
   document.getElementById("removeInfo").style = "display:none";
 
   if (basket[index].amount === 0) {
@@ -31,7 +31,7 @@ function addToCart(index) {
 function addNewKindOfDish(index) {
   let infoRef = document.getElementById("removeInfo");
   finalResult = manageAdditionOrder(index);
-  basket[index].price = finalResult;
+  basket[index].newPrice = finalResult;
   infoRef.innerHTML = "";
   infoRef.innerHTML = basketTemplate(index);
 }
@@ -47,15 +47,9 @@ function calculateInvoice() {
     for (let index = 0; index < basket.length; index++) {
       let result = basket[index];
       sumOfDishes = sumOfDishes + result.amount * result.price;
-
-      if(sumOfDishes == 0 && result.amount == 0){  // if all dishes gone from basket, show default empty basket
-        let invoiceRef = document.getElementById("invoice");
-        invoiceRef.innerHTML="";
-      }
     }
     getInvoiceTemplate(sumOfDishes);
-
-    
+ 
   }
 //clean code here
 
@@ -70,6 +64,7 @@ function additionPrice(index) {
   let finalPrice = document.getElementById(`finalPrice` + index);
   finalPrice.innerHTML = ``;
   let calculationOfPrice = basket[index].amount * basket[index].price;
+  basket[index].newPrice = calculationOfPrice;
   finalPrice.innerHTML = `${calculationOfPrice.toFixed(2)}€`;
 }
 //subtract here
@@ -84,8 +79,8 @@ function addToCartMinus(index) {
 }
 
 function calculateSubtractOfDish(index) {
-  let calculation =
-    basket[index].amount * basket[index].price - basket[index].price;
+  let calculation = basket[index].newPrice - basket[index].price;
+  basket[index].newPrice = calculation;
   let currentPrice = document.getElementById(`finalPrice` + index);
   currentPrice.innerHTML = ``;
   currentPrice.innerHTML = `${calculation.toFixed(2)}€`;
@@ -101,6 +96,7 @@ function subtractAmmount(index) {
 function removeDishFromBasket(index) {
   let foodFieldRef = document.getElementById("foodField" + index);
   basket[index].amount = 0;
+  basket[index].newPrice = 0;
   foodFieldRef.remove();
   calculateInvoice(index);
 }
