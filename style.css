@@ -5,6 +5,8 @@
 
 .navbar {
   background-color: var(--main);
+  box-shadow: var(--bs-box-shadow) !important;
+  z-index: 999;
 }
 
 .mainPicture {

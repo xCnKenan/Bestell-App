@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico" />
     <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="stylesheet" href="./styles/switch.css">
 
     <script src="./script.js"></script>
     <script src="./scripts/db.js"></script>
@@ -63,7 +64,31 @@
           </div>
 
           <!-- Switch Button for Deliver and  pickup-->
-           
+           <div class="switch">
+            <div class="switchContent">
+          <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+          <label class="btn btn-secondary radius option1" for="option1">
+            <div class="contentInfo">
+            <img class="contentLogo" src="./assets/img/deliver.png" alt="">
+                <div class="contentMainInfo">
+                  <span class="titleDeliverAndPickUp">Lieferung</span>
+                  <span class="timeDeliverAndPickUp">25-45 min</span>
+                </div>
+            </div>
+          </label>
+
+          <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+          <label class="btn btn-secondary radius option2" for="option2">
+            <div class="contentInfo">
+            <img class="contentLogo" src="./assets/img/pick-up.png" alt="">
+              <div class="contentMainInfo">
+                <span class="titleDeliverAndPickUp">Abholung</span>
+                <span class="timeDeliverAndPickUp">20 min</span>
+              </div>
+            </div>
+          </label>
+            </div>
+          </div>
           <!--  -->
 
           <div id="shoppingCart">
