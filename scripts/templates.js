@@ -21,49 +21,72 @@ function basketTemplate(index) {
               <img onclick="addToCartMinus(${index})" class="minus" src="./assets/img/minus.png"/>
               <p id="counter${index}">${basket[index].amount}x</p>
               <img onclick="addToCart(${index})" class="plus" src="./assets/img/plus.png"/>
-              <p id="finalPrice${index}">${basket[index].price}€</p>
+              <p id="finalPrice${index}">${basket[index].newPrice}€</p>
               <img onclick="removeDishFromBasket(${index})" class="trash" src="./assets/img/trash.png"/>
             </div>
           </div>
     `;
 }
 
-function getInvoiceTemplate(sumOfDishes){
-
+function getInvoiceTemplate(sumOfDishes) {
   for (let index = 0; index < basket.length; index++) {
-    if(sumOfDishes == 0 && basket[index].amount == 0 && basket[index].newPrice == 0){  // if all dishes gone from basket, show default empty basket
-      let invoiceRef = document.getElementById("invoice");
-      invoiceRef.innerHTML="";
-      document.getElementById("removeInfo").style = "";
-      document.getElementById("removeInfo").innerHTML = "";
-      document.getElementById("removeInfo").innerHTML =`
-            <img src="./assets/img/empty-basket.png" alt="">
-            <span>Warenkorb leer</span>`;
-    } else {
-      let invoiceRef = document.getElementById("invoice");
-      invoiceRef.innerHTML = "";
-      invoiceRef.innerHTML = `<div class="divide" id="divide">
-                <div class="line"></div>
-              </div>
-              <table>
-                <tr>
-                  <td class="costs">Zwischensumme</td>
-                  <td id="invoicePrice" class="costs">${sumOfDishes.toFixed(2)}€</td>
-                </tr>
-                <tr>
-                  <td class="costs">Lieferkosten</td>
-                  <td class="costs">5.00€</td>
-                </tr>
-                <tr>
-                  <td class="boldTitleBasket">Gesamt</td>
-                  <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes.toFixed(2)}€</td>
-                </tr>
-              </table>`;
-    }
-    
+    if (
+      sumOfDishes == 0 &&
+      basket[index].amount == 0 &&
+      basket[index].newPrice == 0
+    )
+      getDefaultBasketTemplate();
+    else getAllCostsTemplate(sumOfDishes);
   }
+}
 
-  
+function getDefaultBasketTemplate() {
+  let invoiceRef = document.getElementById("invoice");
+  invoiceRef.innerHTML = "";
+  document.getElementById("removeInfo").style = "";
+  document.getElementById("removeInfo").innerHTML = "";
+  document.getElementById(
+    "removeInfo"
+  ).innerHTML = `<img src="./assets/img/empty-basket.png" alt="">
+                                                        <span>Warenkorb leer</span>`;
+}
 
-  
+function getAllCostsTemplate(sumOfDishes) {
+  let invoiceRef = document.getElementById("invoice");
+  invoiceRef.innerHTML = "";
+  invoiceRef.innerHTML = `<div class="divide" id="divide">
+            <div class="line"></div>
+          </div>
+          <table>
+            <tr>
+              <td class="costs">Zwischensumme</td>
+              <td id="invoicePrice" class="costs">${sumOfDishes.toFixed(
+                2
+              )}€</td>
+            </tr>
+            <tr>
+              <td id="deliverCosts" class="costs">Lieferkosten</td>
+              <td id="priceDeliverCosts"class="costs">5.00€</td>
+            </tr>
+            <tr>
+              <td class="boldTitleBasket">Gesamt</td>
+              <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfDishes.toFixed(
+                2
+              )}€</td>
+            </tr>
+          </table>`;
+}
+
+function getTemplateOfDeliverCosts(sumOfDishes) {
+  let deliverCostsRef = document.getElementById("informationDeliver");
+  deliverCostsRef.innerHTML = '';
+  deliverCostsRef.innerHTML = `<div class="informationDeliver">
+                                  <div class="bgInformationDeliver">Noch <b>${(35 - sumOfDishes).toFixed(2)}€</b> bis der Mindestbestellwert erreicht ist
+                                  </div>
+                              </div>`;
+}
+
+function removeTemplateofDeliverCosts(){
+  let deliverCostsRef = document.getElementById("informationDeliver");
+  deliverCostsRef.innerHTML = '';
 }

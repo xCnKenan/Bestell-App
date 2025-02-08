@@ -66,7 +66,7 @@
           <!-- Switch Button for Deliver and  pickup-->
            <div class="switch">
             <div class="switchContent">
-          <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+          <input onclick="calculateDeliverCosts(sumOfDishes)" type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
           <label class="btn btn-secondary radius option1" for="option1">
             <div class="contentInfo">
             <img class="contentLogo" src="./assets/img/deliver.png" alt="">
@@ -77,7 +77,7 @@
             </div>
           </label>
 
-          <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+          <input onclick="pickUpFood()" type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
           <label class="btn btn-secondary radius option2" for="option2">
             <div class="contentInfo">
             <img class="contentLogo" src="./assets/img/pick-up.png" alt="">
@@ -90,6 +90,12 @@
             </div>
           </div>
           <!--  -->
+
+          <!-- Information Deliver -->
+
+          <div id="informationDeliver"></div>
+
+           <!-- Information Deliver -->
 
           <div id="shoppingCart">
             <!--hier kommen neue elemente rein--> 

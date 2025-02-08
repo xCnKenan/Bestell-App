@@ -3,6 +3,7 @@
 .switch{
     display: flex;
     justify-content: center;
+    margin-bottom: 24px;
 }
 .switchContent{
     display: flex;
@@ -45,6 +46,10 @@
     
 }
 
+.option1:hover{
+    --bs-btn-bg: #f1f1f1 !important;
+}
+
 .btn-check:checked+.btn{
     border-color: white;
     font-weight: 480;
@@ -59,6 +64,10 @@
     --bs-btn-active-bg: white;
     --bs-btn-padding-x: 0;
     --bs-btn-padding-y: 0;
+}
+
+.option2:hover{
+    --bs-btn-bg: #f1f1f1 !important;
 }
 
 .titleDeliverAndPickUp{

@@ -1,4 +1,5 @@
 let finalResult;
+let sumOfDishes;
 
 function init() {
   renderMainDishes();
@@ -34,6 +35,7 @@ function addNewKindOfDish(index) {
   basket[index].newPrice = finalResult;
   infoRef.innerHTML = "";
   infoRef.innerHTML = basketTemplate(index);
+  
 }
 
 function manageAdditionOrder(index) {
@@ -49,6 +51,7 @@ function calculateInvoice() {
       sumOfDishes = sumOfDishes + result.amount * result.price;
     }
     getInvoiceTemplate(sumOfDishes);
+    calculateDeliverCosts(sumOfDishes);
  
   }
 //clean code here
@@ -100,3 +103,24 @@ function removeDishFromBasket(index) {
   foodFieldRef.remove();
   calculateInvoice(index);
 }
+
+//infoDeliver here
+function calculateDeliverCosts(sumOfDishes) {
+  if(sumOfDishes <= 35){
+    getTemplateOfDeliverCosts(sumOfDishes);
+  } else{
+    removeTemplateofDeliverCosts();
+  }
+}
+
+function pickUpFood(){
+  deliverCostsRef = document.getElementById("deliverCosts");
+  priceDeliverCostsRef = document.getElementById("priceDeliverCosts");
+  informationDeliverRef = document.getElementById("informationDeliver");
+
+  deliverCostsRef.innerHTML='';
+  priceDeliverCostsRef.innerHTML='';
+  informationDeliverRef.innerHTML='';
+}
+
+
