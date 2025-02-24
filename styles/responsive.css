@@ -1,0 +1,110 @@
+.basketOverlay {
+  height: 100vh;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainContent{
+    width: 100%;
+}
+
+.basketResponsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  bottom: 10px;
+  height: 64px;
+  background-color: var(--basket);
+  color: white;
+  width: 80%;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.basketResponsive:hover {
+  background-color: var(--basket-hover);
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+
+  .shoppingCart {
+    display: none;
+  }
+
+  .bgInformationDeliver{
+    text-align: center;
+  }
+
+  #paddingBasket{
+    padding-left: 32px;
+    padding-right: 32px; 
+}
+ 
+}
+
+@media (min-width: 768px) {
+  .basketResponsive {
+    display: none;
+  }
+
+  .shoppingCart {
+    display: block;
+  }
+
+    .content{
+    display: block;
+  }
+
+  #navbar{
+    display: block !important;
+  }
+
+  #content{
+    display: block !important;
+    width: calc(100% - 350px);
+  }
+
+  .showBasket{
+    width: 350px !important;
+  }
+
+  #footer{
+    display: block !important;
+  }
+
+  .close{
+    display: none;
+  }
+
+  .closePosition{
+    display: block;
+  }
+
+ 
+ 
+}
+
+.showBasket {
+  width: 100%;
+  display: block;
+}
+
+.hideContent {
+  display: none;
+}
+
+.d-none {
+  display: none;
+}
+
+
