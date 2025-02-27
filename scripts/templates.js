@@ -27,21 +27,6 @@ function basketTemplate(index) {
     `;
 }
 
-function getInvoiceTemplate(sumOfPriceOfDishes) {
-  for (let index = 0; index < basket.length; index++) {
-    if (sumOfPriceOfDishes == 0 && basket[index].amount == 0 && basket[index].newPrice == 0) {
-      getDefaultBasketTemplate();
-    }
-    else if(delivery == true) {
-      let sumOfDeliver = costs + sumOfPriceOfDishes;
-      getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
-    } else if(delivery == false) {
-      
-      getAllCostsOfDeliverTemplate(sumOfPriceOfDishes);
-    }
-  }
-}
-
 function getDefaultBasketTemplate() {
   let invoiceRef = document.getElementById("invoice");
   invoiceRef.innerHTML = "";
@@ -90,7 +75,7 @@ function getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver) {
             </tr>
           </table>
           
-          <a onclick="purchaseBtnForDeliver()" id="purchaseBtnForDeliver" href="/deliver.html" target="_blank">
+          <a id="purchaseBtnForDeliver" href="/deliver.html" target="_blank">
           <button class="purchaseBtn" id="btnDeliver">
             <span>Bezahlen (${sumOfDeliver.toFixed(2)}€)</span>
           </button>
@@ -115,23 +100,9 @@ function getAllCostsOfDeliverTemplate(sumOfPriceOfDishes) {
             </tr>
           </table>
           
-          <a onclick="purchaseBtnForPickUp()" href="/pickUp.html" target="_blank">
+          <a  href="/pickUp.html" target="_blank">
           <div id="purchaseBtnForPickUp" class="purchaseBtn">
             <span>Bezahlen (${sumOfPriceOfDishes.toFixed(2)}€)</span>
           </div>
           </a>`;
-}
-
-function getTemplateOfDeliverCosts(sumOfPriceOfDishes) {
-  let deliverCostsRef = document.getElementById("informationDeliver");
-  deliverCostsRef.innerHTML = '';
-
-  if(sumOfPriceOfDishes <= 0){
-    deliverCostsRef.innerHTML = '';
-  } else if (sumOfPriceOfDishes <= 35) {
-    deliverCostsRef.innerHTML = `<div class="informationDeliver">
-    <div class="bgInformationDeliver">Noch <b>${(35 - sumOfPriceOfDishes).toFixed(2)}€</b> bis der Mindestbestellwert erreicht ist
-    </div>
-    </div>`;
-  }
 }

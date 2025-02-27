@@ -24,12 +24,10 @@ function addToCart(index) {
   document.getElementById("removeInfo").style = "display:none";
 
   if (delivery == true && basket[index].amount === 0){
-    console.log("delivery is true");
     addNewKindOfDish(index);
     calculateInvoice(index);
     
   } else if ( delivery == true && basket[index].amount >= 0){
-    console.log("delivery is true");
     additionAmmount(index);
     additionPrice(index);
     calculateInvoice(index);
@@ -37,11 +35,9 @@ function addToCart(index) {
   }
 
   if (delivery == false && basket[index].amount === 0){
-    console.log("delivery is false")
     addNewKindOfDish(index);
     calculateInvoice(index);
   } else if(delivery == false && basket[index].amount >= 0){
-    console.log("delivery is false")
     additionAmmount(index);
     additionPrice(index);
     calculateInvoice(index);
@@ -166,7 +162,6 @@ function deliverButton(sumOfPriceOfDishes) {
     getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
     calculateInvoice();
   }
-  console.log(priceOfAllDishes); 
 }
 
 function pickUpButton(sumOfPriceOfDishes){
@@ -177,6 +172,33 @@ function pickUpButton(sumOfPriceOfDishes){
   } else if (delivery == false){
     infoRef.innerHTML = "";
     getAllCostsOfDeliverTemplate(sumOfPriceOfDishes);
+  }  
+}
+
+function getInvoiceTemplate(sumOfPriceOfDishes) {
+  for (let index = 0; index < basket.length; index++) {
+    if (sumOfPriceOfDishes == 0 && basket[index].amount == 0 && basket[index].newPrice == 0) {
+      getDefaultBasketTemplate();
+    }
+    else if(delivery == true) {
+      let sumOfDeliver = costs + sumOfPriceOfDishes;
+      getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
+    } else if(delivery == false) {
+      getAllCostsOfDeliverTemplate(sumOfPriceOfDishes);
+    }
   }
-  console.log(priceOfAllDishes);  
+}
+
+function getTemplateOfDeliverCosts(sumOfPriceOfDishes) {
+  let deliverCostsRef = document.getElementById("informationDeliver");
+  deliverCostsRef.innerHTML = '';
+
+  if(sumOfPriceOfDishes <= 0){
+    deliverCostsRef.innerHTML = '';
+  } else if (sumOfPriceOfDishes <= 35) {
+    deliverCostsRef.innerHTML = `<div class="informationDeliver">
+    <div class="bgInformationDeliver">Noch <b>${(35 - sumOfPriceOfDishes).toFixed(2)}€</b> bis der Mindestbestellwert erreicht ist
+    </div>
+    </div>`;
+  }
 }

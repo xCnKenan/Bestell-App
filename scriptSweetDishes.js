@@ -9,22 +9,18 @@ function renderSweetDishes(){
   function addToCartSweets(indexSweet) {
     document.getElementById("removeInfo").style = "display:none";
     if (delivery == true && basketSweet[indexSweet].amount === 0){
-      console.log("delivery is true");
       addNewKindOfDishOfSweets(indexSweet);
       calculateInvoiceOfSweets(indexSweet);
     } else if ( delivery == true && basketSweet[indexSweet].amount >= 0){
-      console.log("delivery is true");
       additionAmmountOfSweets(indexSweet);
       additionPriceOfSweets(indexSweet);
       calculateInvoiceOfSweets(indexSweet);
     }
   
     if (delivery == false && basketSweet[indexSweet].amount === 0){
-      console.log("delivery is false")
       addNewKindOfDishOfSweets(indexSweet);
       calculateInvoiceOfSweets(indexSweet);
     } else if(delivery == false && basketSweet[indexSweet].amount >= 0){
-      console.log("delivery is false")
       additionAmmountOfSweets(indexSweet);
       additionPriceOfSweets(indexSweet);
       calculateInvoiceOfSweets(indexSweet);
@@ -126,4 +122,29 @@ function addNewKindOfDishOfSweets(indexSweet) {
     foodFieldRef.remove();
     calculateInvoiceOfSweets(indexSweet);
     scrollbar(); 
+  }
+
+  function getInvoiceTemplateOfSweets(sumOfPriceOfDishes) {
+    for (let index = 0; index < basketSweet.length; index++) {
+      if (sumOfPriceOfDishes == 0 && basketSweet[index].amount == 0 && basketSweet[index].newPrice == 0) {
+        getDefaultBasketTemplate();
+      }
+      else if(delivery == true) {
+        let sumOfDeliver = costs + sumOfPriceOfDishes;
+        getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
+      } else if(delivery == false) {
+        getAllCostsOfDeliverTemplateOfSweets(sumOfPriceOfDishes);
+      }
+    }
+  }
+
+  function getTemplateOfDeliverCostsOfSweets(sumOfPriceOfDishes) {
+    let deliverCostsRef = document.getElementById("informationDeliver");
+    deliverCostsRef.innerHTML = '';
+  
+    if(sumOfPriceOfDishes <= 0){
+      deliverCostsRef.innerHTML = '';
+    } else if (sumOfPriceOfDishes <= 35) {
+      deliverCostsRef.innerHTML = showTemplate(sumOfPriceOfDishes);
+    }
   }

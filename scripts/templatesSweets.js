@@ -27,19 +27,7 @@
       `;
   }
   
-  function getInvoiceTemplateOfSweets(sumOfPriceOfDishes) {
-    for (let index = 0; index < basketSweet.length; index++) {
-      if (sumOfPriceOfDishes == 0 && basketSweet[index].amount == 0 && basketSweet[index].newPrice == 0) {
-        getDefaultBasketTemplate();
-      }
-      else if(delivery == true) {
-        let sumOfDeliver = costs + sumOfPriceOfDishes;
-        getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
-      } else if(delivery == false) {
-        getAllCostsOfDeliverTemplateOfSweets(sumOfPriceOfDishes);
-      }
-    }
-  }
+  
   
   function getDefaultBasketTemplate() {
     let invoiceRef = document.getElementById("invoice");
@@ -87,16 +75,9 @@
             </table>`;
   }
   
-  function getTemplateOfDeliverCostsOfSweets(sumOfPriceOfDishes) {
-    let deliverCostsRef = document.getElementById("informationDeliver");
-    deliverCostsRef.innerHTML = '';
-  
-    if(sumOfPriceOfDishes <= 0){
-      deliverCostsRef.innerHTML = '';
-    } else if (sumOfPriceOfDishes <= 35) {
-      deliverCostsRef.innerHTML = `<div class="informationDeliver">
+ function showTemplate(sumOfPriceOfDishes){
+  return `<div class="informationDeliver">
       <div class="bgInformationDeliver">Noch <b>${(35 - sumOfPriceOfDishes).toFixed(2)}€</b> bis der Mindestbestellwert erreicht ist
       </div>
-      </div>`;
-    }
-  }
+      </div>`
+ }

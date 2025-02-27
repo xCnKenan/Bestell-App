@@ -49,13 +49,3 @@ function closeBasket(){
     let closeRef = document.getElementById("close");
     closeRef.classList.toggle("d-none");
 }
-
-function purchaseBtnForDeliver(){
-    if (sumOfPriceOfDishes <= 35){
-        
-    }
-}
-
-function purchaseBtnForPickUp(){
-    
-}
