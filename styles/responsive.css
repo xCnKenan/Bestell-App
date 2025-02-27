@@ -1,0 +1,183 @@
+.basketOverlay {
+  height: 100vh;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainContent{
+    width: 100%;
+}
+
+.basketResponsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  bottom: 10px;
+  height: 64px;
+  background-color: var(--basket);
+  color: white;
+  width: 80%;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.basketResponsive:hover {
+  background-color: var(--basket-hover);
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+
+  .shoppingCart {
+    display: none;
+  }
+
+  .bgInformationDeliver{
+    text-align: center;
+  }
+
+  #paddingBasket{
+    padding-left: 32px;
+    padding-right: 32px; 
+}
+ 
+}
+
+@media (min-width: 768px) {
+  .basketResponsive {
+    display: none;
+  }
+
+  .shoppingCart {
+    display: block;
+  }
+
+    .content{
+    display: block;
+  }
+
+  #navbar{
+    display: block !important;
+  }
+
+  #content{
+    display: block !important;
+    width: calc(100% - 350px);
+  }
+
+  .showBasket{
+    width: 350px !important;
+  }
+
+  .close{
+    display: none;
+  }
+
+  .closePosition{
+    display: block;
+  }
+}
+
+.showBasket {
+  width: 100%;
+  display: block;
+}
+
+.hideContent {
+  display: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.padding{
+  padding: 10px !important;
+}
+
+
+@media(max-width: 500px){
+  .mainLogo{
+    height: 40px;
+  }
+
+  .mydish{
+    font-size: 14px;
+  }
+
+  .boldTitle{
+    font-size: 16px;
+  }
+
+  .dishDescription{
+    font-size: 14px;
+  }
+
+  .basketResponsive {
+    height: 56px;
+  }
+
+  .close{
+    height: 24px;
+  }
+
+  .contentInfo{
+    padding: 0px 24px 0px 24px;
+  }
+
+  .confirmed{
+    font-size: 14px;
+  }
+
+  .info{
+    font-size: 14px;
+    margin-left: 16px !important;
+  }
+}
+
+@media (max-width: 400px){
+  .padding{
+    padding: 6px !important;
+}
+
+.info{
+  text-align: center;
+  margin-left: 0 !important;
+}
+}
+
+@media (min-width: 1921px){
+
+  .navMaxWidth{
+    max-width: 1920px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    
+  }
+
+  .maxWidth{
+    max-width: calc(1920px - 350px) !important;
+    margin-left: auto !important;
+    
+  }
+
+  .basketMaxWidth{
+    max-width: 350px !important;
+    margin-right: auto !important;
+  }
+
+  .deliverAndPickUpWidth{
+    max-width: 1920px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
