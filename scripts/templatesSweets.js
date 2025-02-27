@@ -72,7 +72,13 @@
                 <td class="boldTitleBasket">Gesamt</td>
                 <td id="invoiceAllCosts" class="boldTitleBasket">${sumOfPriceOfDishes.toFixed(2)}€</td>
               </tr>
-            </table>`;
+            </table>
+            
+            <a  href="./pickUp.html" target="_blank">
+          <div id="purchaseBtnForPickUp" class="purchaseBtn">
+            <span>Bezahlen (${sumOfPriceOfDishes.toFixed(2)}€)</span>
+          </div>
+          </a>`;
   }
   
  function showTemplate(sumOfPriceOfDishes){

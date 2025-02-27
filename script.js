@@ -22,36 +22,35 @@ function renderMainDishes() {
 
 function addToCart(index) {
   document.getElementById("removeInfo").style = "display:none";
-
-  if (delivery == true && basket[index].amount === 0){
-    addNewKindOfDish(index);
-    calculateInvoice(index);
-    
-  } else if ( delivery == true && basket[index].amount >= 0){
-    additionAmmount(index);
-    additionPrice(index);
-    calculateInvoice(index);
-    
+  if (delivery == true && basket[index].amount === 0) {
+    startToCalculate(index);
+  } else if (delivery == true && basket[index].amount >= 0) {
+    startMoreToCalculate(index);
   }
-
-  if (delivery == false && basket[index].amount === 0){
-    addNewKindOfDish(index);
-    calculateInvoice(index);
-  } else if(delivery == false && basket[index].amount >= 0){
-    additionAmmount(index);
-    additionPrice(index);
-    calculateInvoice(index);
+  if (delivery == false && basket[index].amount === 0) {
+    startToCalculate(index);
+  } else if (delivery == false && basket[index].amount >= 0) {
+    startMoreToCalculate(index);
   }
- 
   scrollbar();
-
 }
 
-function scrollbar(){
+function startToCalculate(index) {
+  addNewKindOfDish(index);
+  calculateInvoice(index);
+}
+
+function startMoreToCalculate(index) {
+  additionAmmount(index);
+  additionPrice(index);
+  calculateInvoice(index);
+}
+
+function scrollbar() {
   let basketRef = document.getElementById("basketRefs");
-  if (sumOfPriceOfDishes > 0){
+  if (sumOfPriceOfDishes > 0) {
     basketRef.classList.add("basketRefs");
-  } else if ( sumOfPriceOfDishes == 0 ){
+  } else if (sumOfPriceOfDishes == 0) {
     basketRef.classList.remove("basketRefs");
   }
   basketRef.scrollTop = basketRef.scrollHeight;
@@ -73,34 +72,48 @@ function manageAdditionOrder(index) {
 
 function calculateInvoice() {
   let sumOfDishes = 0;
-  if (delivery == true){
-    for (let index = 0; index < basket.length; index++) {
-      let result = basket[index];
-      sumOfDishes = sumOfDishes + result.amount * result.price;
-      }
-    priceOfAllDishes = sumOfDishes;
-    sumOfPriceOfDishes = priceOfAllDishes + priceOfAllDishesOfSweets;
-    getInvoiceTemplate(sumOfPriceOfDishes);
-    getTemplateOfDeliverCosts(sumOfPriceOfDishes);
-  } 
-
-  if (delivery == false){
-    for (let index = 0; index < basket.length; index++) {
-      let result = basket[index];
-      sumOfDishes = sumOfDishes + result.amount * result.price;
-    }
-    priceOfAllDishes = sumOfDishes;
-    sumOfPriceOfDishes = priceOfAllDishes + priceOfAllDishesOfSweets;
-    getInvoiceTemplate(sumOfPriceOfDishes);
-   } 
-
-   if(sumOfPriceOfDishes < 35 && delivery == true && sumOfPriceOfDishes != 0){
-    let purchaseBtnForDeliverRef = document.getElementById("purchaseBtnForDeliver");
-    let btnDeliverRef = document.getElementById("btnDeliver");
-        purchaseBtnForDeliverRef.classList.add("inactive");
-        btnDeliverRef.classList.add("btnDeliver");
-   }
+  if (delivery == true) {
+    calculateDeliverCosts(sumOfDishes);
   }
+
+  if (delivery == false) {
+    calculatePickUpCosts(sumOfDishes);
+  }
+
+  if (sumOfPriceOfDishes < 35 && delivery == true && sumOfPriceOfDishes != 0) {
+    emptyAll();
+  }
+}
+
+function calculateDeliverCosts(sumOfDishes) {
+  for (let index = 0; index < basket.length; index++) {
+    let result = basket[index];
+    sumOfDishes = sumOfDishes + result.amount * result.price;
+  }
+  priceOfAllDishes = sumOfDishes;
+  sumOfPriceOfDishes = priceOfAllDishes + priceOfAllDishesOfSweets;
+  getInvoiceTemplate(sumOfPriceOfDishes);
+  getTemplateOfDeliverCosts(sumOfPriceOfDishes);
+}
+
+function calculatePickUpCosts(sumOfDishes) {
+  for (let index = 0; index < basket.length; index++) {
+    let result = basket[index];
+    sumOfDishes = sumOfDishes + result.amount * result.price;
+  }
+  priceOfAllDishes = sumOfDishes;
+  sumOfPriceOfDishes = priceOfAllDishes + priceOfAllDishesOfSweets;
+  getInvoiceTemplate(sumOfPriceOfDishes);
+}
+
+function emptyAll() {
+  let purchaseBtnForDeliverRef = document.getElementById(
+    "purchaseBtnForDeliver"
+  );
+  let btnDeliverRef = document.getElementById("btnDeliver");
+  purchaseBtnForDeliverRef.classList.add("inactive");
+  btnDeliverRef.classList.add("btnDeliver");
+}
 
 function additionAmmount(index) {
   let currentNumber = document.getElementById(`counter` + index);
@@ -123,7 +136,7 @@ function addToCartMinus(index) {
     calculateSubtractOfDish(index);
     subtractAmmount(index);
     calculateInvoice(index);
-  } else if (basket[index].amount = 1) {
+  } else if ((basket[index].amount = 1)) {
     removeDishFromBasket(index);
   }
 }
@@ -154,36 +167,43 @@ function removeDishFromBasket(index) {
 
 function deliverButton(sumOfPriceOfDishes) {
   delivery = true;
-  if (sumOfPriceOfDishes == 0){
+  if (sumOfPriceOfDishes == 0) {
     getAgainDefaultBasketTemplate();
-  } else if (delivery == true){
-    getTemplateOfDeliverCosts(sumOfPriceOfDishes);
-    sumOfDeliver = costs + sumOfPriceOfDishes;
-    getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
-    calculateInvoice();
+  } else if (delivery == true) {
+    showCosts(sumOfPriceOfDishes);
   }
 }
 
-function pickUpButton(sumOfPriceOfDishes){
+function showCosts(sumOfPriceOfDishes){
+  getTemplateOfDeliverCosts(sumOfPriceOfDishes);
+  sumOfDeliver = costs + sumOfPriceOfDishes;
+  getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
+  calculateInvoice();
+}
+
+function pickUpButton(sumOfPriceOfDishes) {
   delivery = false;
   let infoRef = document.getElementById("informationDeliver");
-  if(sumOfPriceOfDishes == 0){
+  if (sumOfPriceOfDishes == 0) {
     getAgainDefaultBasketTemplate();
-  } else if (delivery == false){
+  } else if (delivery == false) {
     infoRef.innerHTML = "";
     getAllCostsOfDeliverTemplate(sumOfPriceOfDishes);
-  }  
+  }
 }
 
 function getInvoiceTemplate(sumOfPriceOfDishes) {
   for (let index = 0; index < basket.length; index++) {
-    if (sumOfPriceOfDishes == 0 && basket[index].amount == 0 && basket[index].newPrice == 0) {
+    if (
+      sumOfPriceOfDishes == 0 &&
+      basket[index].amount == 0 &&
+      basket[index].newPrice == 0
+    ) {
       getDefaultBasketTemplate();
-    }
-    else if(delivery == true) {
+    } else if (delivery == true) {
       let sumOfDeliver = costs + sumOfPriceOfDishes;
       getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver);
-    } else if(delivery == false) {
+    } else if (delivery == false) {
       getAllCostsOfDeliverTemplate(sumOfPriceOfDishes);
     }
   }
@@ -191,14 +211,11 @@ function getInvoiceTemplate(sumOfPriceOfDishes) {
 
 function getTemplateOfDeliverCosts(sumOfPriceOfDishes) {
   let deliverCostsRef = document.getElementById("informationDeliver");
-  deliverCostsRef.innerHTML = '';
+  deliverCostsRef.innerHTML = "";
 
-  if(sumOfPriceOfDishes <= 0){
-    deliverCostsRef.innerHTML = '';
+  if (sumOfPriceOfDishes <= 0) {
+    deliverCostsRef.innerHTML = "";
   } else if (sumOfPriceOfDishes <= 35) {
-    deliverCostsRef.innerHTML = `<div class="informationDeliver">
-    <div class="bgInformationDeliver">Noch <b>${(35 - sumOfPriceOfDishes).toFixed(2)}€</b> bis der Mindestbestellwert erreicht ist
-    </div>
-    </div>`;
+    deliverCostsRef.innerHTML = showTemplate(sumOfPriceOfDishes);
   }
 }
