@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico" />
     <link rel="stylesheet" href="./styles/card.css" />
-    <link rel="stylesheet" href="./styles/switch.css">
-    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/switch.css" />
+    <link rel="stylesheet" href="./styles/responsive.css" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="./script.js"></script>
     <script src="./scripts/db.js"></script>
@@ -22,11 +30,13 @@
     <script src="./scriptSweetDishes.js"></script>
     <script src="./scripts/templatesSweets.js"></script>
     <script src="./scripts/basketResponsive.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?always=1"></script>
-
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?always=1"
+    ></script>
   </head>
   <body onload="init()">
-    <nav id="navbar" class="navbar ">
+    <nav id="navbar" class="navbar">
       <div class="container-fluid navMaxWidth">
         <a class="navbar-brand" href="./index.html">
           <img
@@ -41,11 +51,13 @@
 
     <main>
       <section class="content maxWidth" id="content">
-        <div class="dishes ">
+        <div class="dishes">
           <img class="mainPicture" src="./assets/img/bowl.jpg" alt="" />
-          <div class="chooseDishes ">
-            <img class="arrowDishes" src="./assets/icons/send.png" alt="">
-            <span onclick="renderMainDishes()" class="mydish ">Hauptgerichte</span>
+          <div class="chooseDishes">
+            <img class="arrowDishes" src="./assets/icons/send.png" alt="" />
+            <span onclick="renderMainDishes()" class="mydish"
+              >Hauptgerichte</span
+            >
             <span onclick="renderSweetDishes()" class="mydish">Desserts</span>
           </div>
           <img
@@ -53,11 +65,15 @@
             src="./assets/img/bowl-second.jpg"
             alt=""
           />
-          <div class="allDishes" id="allDishes">
-          </div>
+          <div class="allDishes" id="allDishes"></div>
           <div>
-            <img class="mainPicture picturePadding" src="./assets/img/brownie.jpg"/>
-            <span onclick="renderSweetDishes()" class="chooseDish mydish">Desserts</span>
+            <img
+              class="mainPicture picturePadding"
+              src="./assets/img/brownie.jpg"
+            />
+            <span onclick="renderSweetDishes()" class="chooseDish mydish"
+              >Desserts</span
+            >
           </div>
         </div>
       </section>
@@ -65,78 +81,106 @@
       <section class="shoppingCart basketMaxWidth" id="shoppingCart">
         <div class="basket shadow">
           <div id="paddingBasket">
+            <div class="card rounded-0">
+              <div class="card-body" id="closePosition">
+                <h1>Warenkorb</h1>
 
-          
-          <div class="card rounded-0">
-            <div class="card-body" id="closePosition">
-              <h1>Warenkorb</h1>
-
-              <img onclick="closeBasket()" class="close d-none" id="close" src="./assets/icons/close.png" alt="Close">
-            </div>
-          </div>
-
-          <!-- Switch Button for Deliver and  pickup-->
-           <div class="switch">
-            <div class="switchContent">
-          <input onclick="deliverButton(sumOfPriceOfDishes)" type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-          <label class="btn btn-secondary radius option1" for="option1">
-            <div class="contentInfo">
-            <img class="contentLogo" src="./assets/img/deliver.png" alt="">
-                <div class="contentMainInfo">
-                  <span class="titleDeliverAndPickUp">Lieferung</span>
-                  <span class="timeDeliverAndPickUp">25-45 min</span>
-                </div>
-            </div>
-          </label>
-
-          <input onclick="pickUpButton(sumOfPriceOfDishes)" type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-          <label class="btn btn-secondary radius option2" for="option2">
-            <div class="contentInfo">
-            <img class="contentLogo" src="./assets/img/pick-up.png" alt="">
-              <div class="contentMainInfo">
-                <span class="titleDeliverAndPickUp">Abholung</span>
-                <span class="timeDeliverAndPickUp">20 min</span>
+                <img
+                  onclick="closeBasket()"
+                  class="close d-none"
+                  id="close"
+                  src="./assets/icons/close.png"
+                  alt="Close"
+                />
               </div>
             </div>
-          </label>
+
+            <!-- Switch Button for Deliver and  pickup-->
+            <div class="switch">
+              <div class="switchContent">
+                <input
+                  onclick="deliverButton(sumOfPriceOfDishes)"
+                  type="radio"
+                  class="btn-check"
+                  name="options"
+                  id="option1"
+                  autocomplete="off"
+                  checked
+                />
+                <label class="btn btn-secondary radius option1" for="option1">
+                  <div class="contentInfo">
+                    <img
+                      class="contentLogo"
+                      src="./assets/img/deliver.png"
+                      alt=""
+                    />
+                    <div class="contentMainInfo">
+                      <span class="titleDeliverAndPickUp">Lieferung</span>
+                      <span class="timeDeliverAndPickUp">25-45 min</span>
+                    </div>
+                  </div>
+                </label>
+
+                <input
+                  onclick="pickUpButton(sumOfPriceOfDishes)"
+                  type="radio"
+                  class="btn-check"
+                  name="options"
+                  id="option2"
+                  autocomplete="off"
+                />
+                <label class="btn btn-secondary radius option2" for="option2">
+                  <div class="contentInfo">
+                    <img
+                      class="contentLogo"
+                      src="./assets/img/pick-up.png"
+                      alt=""
+                    />
+                    <div class="contentMainInfo">
+                      <span class="titleDeliverAndPickUp">Abholung</span>
+                      <span class="timeDeliverAndPickUp">20 min</span>
+                    </div>
+                  </div>
+                </label>
+              </div>
             </div>
+
+            <section id="basketRefs">
+              <div id="informationDeliver"></div>
+
+              <div id="shoppingCart">
+                <div id="removeInfo" class="emptyBasket">
+                  <img src="./assets/img/empty-basket.png" alt="EMPTY-BASKET" />
+                  <span>Warenkorb leer</span>
+                </div>
+              </div>
+
+              <div id="addFood"></div>
+
+              <div id="invoice"></div>
+            </section>
           </div>
-
-        <section id="basketRefs">
-
-          <div id="informationDeliver"></div>
-
-          <div id="shoppingCart"> 
-            <div id="removeInfo" class="emptyBasket">
-            <img src="./assets/img/empty-basket.png" alt="EMPTY-BASKET">
-            <span>Warenkorb leer</span>
-            </div>
-          </div>
-
-          <div id="addFood"></div>
-
-          <div id="invoice"></div>
-        	 
-        </section>
-
         </div>
-      </div>
       </section>
     </main>
 
-    <section onclick="openBasket()" class="basketResponsive" id="basketResponsive">
-          <span>Warenkorb</span>
+    <section
+      onclick="openBasket()"
+      class="basketResponsive"
+      id="basketResponsive"
+    >
+      <span>Warenkorb</span>
     </section>
 
     <footer id="footer" class="footer">
       <div>
-      <a href="./impressum.html" target="_blank">Impressum</a>
-      <a href="./datenschutz.html" target="_blank">Datenschutz</a>
+        <a href="./impressum.html" target="_blank">Impressum</a>
+        <a href="./datenschutz.html" target="_blank">Datenschutz</a>
       </div>
       <span class="published">
-        <img class="creator" src=".//assets/icons/copyright.png" alt="">
-        2025 Kenan Cetin</span>
+        <img class="creator" src=".//assets/icons/copyright.png" alt="" />
+        2025 Kenan Cetin</span
+      >
     </footer>
-  
   </body>
 </html>
