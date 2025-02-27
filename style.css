@@ -27,6 +27,15 @@
   align-items: center;
 }
 
+.arrowDishes{
+  height: 40px;
+  object-fit: contain;
+}
+
+.chooseDishes span{
+  margin-right: 8px;
+}
+
 
 
 .divide {

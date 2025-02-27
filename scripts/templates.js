@@ -75,7 +75,7 @@ function getAllCostsTemplate(sumOfPriceOfDishes, sumOfDeliver) {
             </tr>
           </table>
           
-          <a id="purchaseBtnForDeliver" href="/deliver.html" target="_blank">
+          <a id="purchaseBtnForDeliver" href="./deliver.html" target="_blank">
           <button class="purchaseBtn" id="btnDeliver">
             <span>Bezahlen (${sumOfDeliver.toFixed(2)}€)</span>
           </button>
@@ -100,7 +100,7 @@ function getAllCostsOfDeliverTemplate(sumOfPriceOfDishes) {
             </tr>
           </table>
           
-          <a  href="/pickUp.html" target="_blank">
+          <a  href="./pickUp.html" target="_blank">
           <div id="purchaseBtnForPickUp" class="purchaseBtn">
             <span>Bezahlen (${sumOfPriceOfDishes.toFixed(2)}€)</span>
           </div>
